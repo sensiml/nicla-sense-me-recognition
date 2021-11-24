@@ -1,3 +1,5 @@
+.pio/
+.vscode/
 # Prerequisites
 *.d
 
