@@ -58,10 +58,11 @@ int setup_sensors(JsonDocument& config_message, int column_start)
 #endif
     return column_index;
 }
-
+int get_td_index();
 int update_sensor_data_col(int startIndex)
 {
     int index = startIndex;
+ 
 #if ENABLE_ACCEL
     sensorDataCol[index++] = accel.x();
     sensorDataCol[index++] = accel.y();
@@ -80,6 +81,7 @@ int update_sensor_data_col(int startIndex)
     sensorDataCol[index++] = mag.z();
 #endif
 
+    
     return index;
 }
 

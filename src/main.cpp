@@ -13,6 +13,7 @@
 #include <kb.h>
 #include "kb_debug.h"
 
+void sml_recognition_run(signed short *data, int num_sensors);
 #if USE_BLE
 #include "ArduinoBLE.h"
 
@@ -273,10 +274,11 @@ void setup()
 #if USE_BLE
     Serial.begin(SERIAL_BAUD_RATE_DEFAULT);
 #else
-    Serial.begin(SERIAL_BAUD_RATE);
+    Serial.begin(SERIAL_BAUD_RATE_DEFAULT);
 #endif
     while (!Serial)
         ;
+    Serial.print("Starting up");    
     kb_model_init();
     NiclaSettings niclaSettings(NICLA_I2C, 0, NICLA_VIA_ESLOV, 0);
     BHY2.begin(niclaSettings);
@@ -340,12 +342,16 @@ void loop()
     {
         // disconnectedLight();
     }
-#endif
+
     if (ble_connected)
     {
         connected_to_host = true;
     }
 
+    #else
+    connected_to_host = true;
+    #endif
+    
     if (connected_to_host)
     {
         // CHECKME
@@ -366,6 +372,7 @@ void loop()
                 }
                 memset(pData, 0, MAX_NUMBER_OF_COLUMNS * MAX_SAMPLES_PER_PACKET * sizeof(int16_t));
                 packetNum = 0;
+                sensorRawIndex = 0;
             }
 
 #endif  //#if ENABLE_ACCEL || ENABLE_GYRO || ENABLE_MAG

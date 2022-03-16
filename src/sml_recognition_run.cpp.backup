@@ -1,4 +1,4 @@
-#include "sensor_stream.h"
+#include "sensor_config.h"
 #include "kb.h"
 //FILL_USE_TEST_DATA
 
@@ -6,7 +6,7 @@
 #include "testdata.h"
 int td_index = 0;
 #endif // SML_USE_TEST_DATA
-void sml_output_results(uint16_t model, uint16_t classification);
+
 void sml_recognition_run(signed short *data, int num_sensors)
 {
 
