@@ -14,9 +14,9 @@ Unzip the download to a location of your choosing. In the folder, you will find 
 
 * knowledgepack/
   * knowledgepack_project/
-  * libsensiml/
+  * sensiml/
 
-Copy the files from `libsensiml` to lib/sensiml. It is **ok to overwrite these, but do not commit them in a pull request**. The files provided in this repository are for examples only.
+Copy the files from `sensiml` to lib/sensiml. It is **ok to overwrite these, but do not commit them in a pull request**. The files provided in this repository are for examples only.
 
 Copy the files from `knowledgepack_project` to src/
 This should be `sml_recognition_run.cpp`, which will contain the necessary model running code to enable recognition on the device. 
