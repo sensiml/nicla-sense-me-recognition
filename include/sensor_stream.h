@@ -32,7 +32,7 @@
 
 //when using BLE: suggest to set up to 100
 //when using serial: suggest to set up to 400, this depends on the performance of the PC being used as well
-#define ODR_IMU 200
+#define ODR_IMU 400
 
 
 

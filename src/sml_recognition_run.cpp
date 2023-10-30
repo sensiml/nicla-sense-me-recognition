@@ -6,6 +6,8 @@
 #include "testdata.h"
 int td_index = 0;
 #endif // SML_USE_TEST_DATA
+
+// Reference to sml_output_results which is found in main.cpp
 void sml_output_results(uint16_t model, uint16_t classification);
 void sml_recognition_run(signed short *data, int num_sensors)
 {
@@ -26,9 +28,9 @@ void sml_recognition_run(signed short *data, int num_sensors)
 #else
 
 #if ENABLE_ACCEL || ENABLE_GYRO || ENABLE_MAG
-    		ret = kb_run_model((SENSOR_DATA_T *)data, num_sensors, KB_MODEL_P1_rank_4_INDEX);
+    		ret = kb_run_model((SENSOR_DATA_T *)data, num_sensors, KB_MODEL_DEFAULT_MODEL_RANK_4_INDEX);
 		if (ret >= 0){
-			sml_output_results(KB_MODEL_P1_rank_4_INDEX, ret);
+			sml_output_results(KB_MODEL_DEFAULT_MODEL_RANK_4_INDEX, ret);
 			kb_reset_model(0);
 		};
 #endif // ENABLE_ACCEL || ENABLE_GYRO || ENABLE_MAG
@@ -37,7 +39,7 @@ void sml_recognition_run(signed short *data, int num_sensors)
     //FILL_RUN_MODEL_AUDIO
 #endif // ENABLE_AUDIO
 
-#if !(ENABLE_ACCEL || ENABLE_GYRO || ENABLE_MAG) || !(ENABLE_AUDIO)
+#if !(ENABLE_ACCEL || ENABLE_GYRO || ENABLE_MAG) && !(ENABLE_AUDIO)
     //FILL_RUN_MODEL_CUSTOM
 #endif // ENABLE_ACCEL || ENABLE_GYRO || ENABLE_MAG
 #endif // SML_USE_TEST_DATA

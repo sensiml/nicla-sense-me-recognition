@@ -13,8 +13,8 @@
 #include <kb.h>
 #include "kb_debug.h"
 
-void sml_recognition_run(signed short *data, int num_sensors);
 #if USE_BLE
+
 #include "ArduinoBLE.h"
 
 const char* nameOfPeripheral            = "Nicla Sense ME DCL Endpoint";
@@ -52,6 +52,9 @@ BLECharacteristic sensorDataChar(uuidOfDataChar,
                                  WRITE_BUFFER_FIXED_LENGTH);
 BLEDescriptor     sensorDataDescriptor("2901", "Sensor Data TX");
 #endif  // USE_BLE
+
+
+void sml_recognition_run(signed short *data, int num_sensors);
 
 static int8_t json_cfg_buffer[WRITE_BUFFER_SIZE];
 
